@@ -1,0 +1,106 @@
+@import "../../.config/waybar/colors-matugen.css";
+@define-color dark-9 #11111b;
+@define-color dark-8 #181825;
+@define-color dark-7 #313244;
+@define-color highlight #cba6f7; /* Soft Pastel Purple Lavender */
+
+* {
+    font-family: "JetBrainsMono Nerd Font Propo", "JetBrainsMono Nerd Font";
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+}
+#mpris {
+    color: @primary;
+    background: transparent;
+    padding: 0px 10px;
+    font-weight: 700;
+}
+
+window#waybar {
+    background: @theme_bg_dark;
+    color: @theme_fg;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* WORKSPACES COMPONENT PILLS */
+#workspaces button {
+    padding: 3px 8px;
+    margin: 5px 2px;
+    background-color: transparent;
+    color: #a6adc8;
+    border-radius: 6px;
+}
+
+#workspaces button.active {
+    background-color: @primary;
+    color: @on_primary;
+    font-weight: 800;
+}
+
+#workspaces button.urgent {
+    background-color: #f38ba8;
+    color: @dark-9;
+}
+
+/* CENTER BLOCK DIGITAL CLOCK */
+#clock {
+background-color: @surface;        /* Elegant dark slate matched to your wallpaper */
+    padding: 2px 15px;
+    margin: 5px 0px;
+    border-radius: 8px;
+    color: @primary;                   /* That gorgeous #96ccf8 blue accent */
+    transition: all 0.5s ease-in-out;
+}
+/* RIGHT WIDGET RIGGING */
+#battery, #bluetooth, #network, #cpu, #memory, #volume {
+background-color: @theme_bg_dark; /* Changes block bg dynamically */
+background-color: @surface;        /* Clean, unified dark blocks */
+    color: #ffffff;                    /* Crisp white text so it's super readable */
+    padding: 3px 12px;
+    margin: 5px 4px;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+
+/* SPECIAL SLIDER INLINE FORMATTING */
+#pulse-audio-slider {
+    min-width: 60px;
+    margin-left: 8px;
+}
+
+#pulseaudio slider trough {
+    min-height: 8px;
+    background-color: @dark-7;
+    border-radius: 4px;
+}
+
+#pulseaudio slider highlight {
+    background-color: @highlight;
+    border-radius: 4px;
+}
+
+/* MEDIA SUB-COMPONENTS STYLING */
+#custom-media-now-playing {
+    color: @highlight;
+    padding-left: 6px;
+}
+
+#custom-media-time {
+    color: #a6adc8;
+    font-size: 13px;
+    padding-left: 6px;
+}
+
+/* TOOLTIP CONTAINER FORMATTING */
+tooltip {
+    background: @dark-9;
+    border-radius: 8px;
+    border: 1px solid @dark-7;
+}
+tooltip label {
+    color: #cdd6f4;
+    padding: 5px;
+}
