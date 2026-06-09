@@ -1,10 +1,10 @@
-# 🌸 Arch Linux ARM · Hyprland Dotfiles
+#  Arch Linux ARM · Hyprland Dotfiles
 
 > *Built on a MacBook Air M4, from scratch, with patience, broken configs, and too many late nights.*
 
 ---
 
-## ⚙️ System
+##  System
 
 | | |
 |---|---|
@@ -22,7 +22,7 @@
 
 ---
 
-## 📁 Contents
+##  Contents:
 
 ```
 dotfiles/
@@ -34,7 +34,7 @@ dotfiles/
 
 ---
 
-## 🗺️ The Journey
+##  The Journey:
 
 ### Why this exists
 
@@ -46,7 +46,7 @@ One day I decided to actually use it.
 
 ### Setting up UTM
 
-UTM is a free virtualisation app for macOS that uses Apple's native Hypervisor framework. The key thing on Apple Silicon is choosing **Virtualize** over **Emulate** — virtualization runs ARM64 Linux natively at near-native performance. Emulation translates x86 instructions, which is slow.
+UTM is a free virtualisation app for macOS that uses Apple's native Hypervisor framework. The key thing on Apple Silicon is choosing **Virtualize** over **Emulate**, virtualization runs ARM64 Linux natively at near-native performance. Emulation translates x86 instructions, which is slow.
 
 Downloaded UTM from [getutm.app](https://getutm.app) (free). The App Store version is paid for the exact same thing.
 
@@ -80,7 +80,7 @@ Fedora is just scaffolding. After installation it's completely gone.
 
 ### Partitioning
 
-Booted into Fedora live, opened terminal, ran `lsblk` to identify the virtual disk:
+Booted into Fedora Workstation 45, opened terminal, ran `lsblk` to identify the virtual disk:
 
 ```
 vda    64G   → target disk (empty)
@@ -162,13 +162,17 @@ Added display manager, audio via PipeWire, and network management. Configured `h
 
 This is where the real time went.
 
-**Waybar** — custom modules for workspaces, clock, volume, network, CPU. Configured through `config.jsonc` and `style.css`.
+**Waybar** : custom modules for workspaces, clock, volume, network, CPU. Configured through `config.jsonc` and `style.css`.
 
-**Foot** — translucent terminal with custom colours. Config at `~/.config/foot/foot.ini`.
+**Foot** : translucent terminal with custom colours. Config at `~/.config/foot/foot.ini`.
 
-**Rofi** — application launcher with blur and custom theme matching the rest of the setup.
+**Rofi** : application launcher with blur and custom theme matching the rest of the setup.
 
-**Wallpapers** — rotated through several, managed via `swww`.
+**Wallpapers** : rotated through several, managed via `swww`.
+
+**Wallpaper script** : A constantly running loop that executes after an interval of 10 minutes, picking a random wallpaper.
+
+**Matugen** : A tool that automatically picks out a colour palette based on the current wallpaper, applying it dynamically to the waybar.
 
 The aesthetic direction: dark, detailed, Japanese-influenced artwork. High contrast, moody.
 
@@ -176,22 +180,28 @@ At one point I was correcting the AI assistant's Hyprland syntax because it kept
 
 ---
 
-### The Git Mess (and how I fixed it)
+### The Git Mess (and how i fixed it):
 
 Setting up this dotfiles repo was its own adventure.
+A simple git mistake turned into a full system meltdown.
 
-**Problem 1: Embedded git repo**
+I accidentally pushed my Hyprland dotfiles to master instead of main. To fix it, I ran a rebase pull and somehow, that wiped my hyprland.conf and the entire hypr config directory clean off my system. My wallpaper scripts, theme switcher, keybinds, all gone. Hyprland panicked, triggered its fallback mechanism, and regenerated a bare-bones boilerplate config. My entire setup went haywire.
 
-LazyVim ships with its own `.git` folder inside `~/.config/nvim/`. When I copied nvim into dotfiles and ran `git add .`, git detected a repo inside a repo and tracked it as a submodule instead of regular files. It showed greyed out with an arrow on GitHub.
+To make it worse, my terminal keybind had remapped to the default Cmd+Q, which macOS immediately hijacks, threatening to close the window. I was completely locked out of my own system. Eight days of work, gone.
 
-Fix:
-```bash
-git rm --cached nvim
-rm -rf nvim/.git
-git add nvim/
-git commit -m "fix nvim submodule"
-git push
-```
+But I had one fallback: **GNOME**.
+
+I logged out of Hyprland, switched to GNOME, and opened its terminal. From there, I traced the issue, my files hadn't vanished entirely. They'd been pushed to master, not main. I could still see them in GitHub's branch comparison view.
+
+So I rebuilt everything manually. Opened Neovim, recreated the .config/hypr directory structure, and copy-pasted each file back from that GitHub window: hyprland.conf, hyprlock.conf, all my scripts, and the wallpaper folder. Once the structure was restored, I logged back into Hyprland.
+
+It was all back.
+
+One last thing: my wallpaper script wasn't running. Turned out I hadn't made it executable again. A quick chmod +x and everything was back exactly as I'd left it.
+
+The lesson? Always have a fallback session manager. Always verify your git remote before pushing. And never underestimate how far systematic debugging can take you when you stay calm and think through the problem. Most importantly, do NOT be stupid enough to push straight from .config, there's a reason dot files are hidden when a normal "ls" command is passed in the terminal.
+
+No AI. No Stack Overflow. Just pattern recognition and not giving up.
 
 **Problem 2: Divergent branches on pull**
 
@@ -210,13 +220,13 @@ This merged the remote README into the local branch, resolved the conflict, then
 
 ---
 
-## 🚀 What's Next
+##  What's Next:
 
 - Rebuild the entire setup from scratch without guides or AI to develop genuine understanding
 - Migrate `hyprland.conf` to Lua (the new standard)
 - Replace Waybar + Rofi with **QuickShell** for a more modern setup
 - Daily drive Linux on bare metal once I get a ThinkPad
-- Dual boot immediately on any Windows machine I get
+- Dual boot immediately on any Windows machine I get (because hyrpland + lazyvim feels incredible).
 
 ---
 
@@ -224,7 +234,6 @@ This merged the remote README into the local branch, resolved the conflict, then
 
 - Everything runs inside UTM on an M4 Mac. Performance is smooth for development and terminal work. Media playback and Spotify stay on macOS natively.
 - Foot terminal is used over Kitty/Alacritty due to hardware acceleration restrictions in the VM environment. Foot is Wayland-native and works perfectly.
-- The wallpapers folder is gitignored intentionally.
 
 ---
 
