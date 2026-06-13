@@ -7,7 +7,7 @@ for pid in $(pgrep -f wallpaper_loop.sh); do
   fi
 done
 
-DIR="$HOME/.config/hypr/wallpapers"
+DIR="$HOME/Wallpaper-Bank/wallpapers/"
 INTERVAL=600
 
 if ! pgrep -x "swww-daemon" >/dev/null; then
