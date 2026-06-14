@@ -31,7 +31,7 @@ while true; do
     --transition-duration 2
 
   # 5. Generate colors dynamically via matugen (matugen automatically draws the colour pallete out of the current wallpaper, i dont wanna spend a year learning colour theory just to design a dynamic waybar)
-  matugen image "$RANDOM_PIC" --source-color-index 0
+  matugen image "$RANDOM_PIC" --source-color-index 1 -m dark -t scheme-vibrant --prefer saturation
 
   # 6. Refresh your Waybar styles (restart waybar to apply the new theme when the wallpaper changes)
   killall -SIGUSR2 waybar
