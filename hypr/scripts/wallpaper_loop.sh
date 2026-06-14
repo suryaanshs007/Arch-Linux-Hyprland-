@@ -7,7 +7,7 @@ for pid in $(pgrep -f wallpaper_loop.sh); do
   fi
 done
 
-DIR="$HOME/Wallpaper-Bank/wallpapers/"
+DIR="$HOME/favwalls"
 INTERVAL=600
 
 if ! pgrep -x "swww-daemon" >/dev/null; then
@@ -31,7 +31,7 @@ while true; do
     --transition-duration 2
 
   # 5. Generate colors dynamically via matugen (matugen automatically draws the colour pallete out of the current wallpaper, i dont wanna spend a year learning colour theory just to design a dynamic waybar)
-  matugen image "$RANDOM_PIC" --source-color-index 1 -m dark -t scheme-vibrant --prefer saturation
+  matugen image "$RANDOM_PIC" --source-color-index 0 -m dark -t scheme-fidelity   
 
   # 6. Refresh your Waybar styles (restart waybar to apply the new theme when the wallpaper changes)
   killall -SIGUSR2 waybar
