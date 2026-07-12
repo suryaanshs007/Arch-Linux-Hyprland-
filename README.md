@@ -4,6 +4,14 @@
 
 ---
 
+## Preview: 
+ 
+<img src="./HyprlandRicePreview.png" alt="My hyprland rice with the purple eyes wallpaper"> 
+
+#### The image displays an exact representation of what the rice would look like on your device. The waybar, as you can see, is themed according to the wallpaper, all thanks to matugen. It dynamically extracts the colours from the active wallpaper and applies them to the waybar. You'll find more details within this README regarding its working and the script based trigger that allows the dynamic theming to occur.
+
+
+
 ##  System
 
 | | |
