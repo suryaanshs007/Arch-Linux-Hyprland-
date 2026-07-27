@@ -174,6 +174,10 @@ This is where the real time went.
 
 **Foot** : translucent terminal with custom colours. Config at `~/.config/foot/foot.ini`.
 
+**Hyprglass** : A tool to add an immediate glass-effect
+to the terminal windows, it can be installed through hyprpm <em>(make sure hyprm's headers are fully updated, run `hyprpm update`)</em> using the following command in the terminal:
+`hyprpm add https://github.com/hyprnux/hyprglass`
+
 **Rofi** : application launcher with blur and custom theme matching the rest of the setup.
 
 **Wallpapers** : rotated through several, managed via `swww`.
